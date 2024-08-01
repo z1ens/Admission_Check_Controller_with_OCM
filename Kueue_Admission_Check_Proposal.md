@@ -62,7 +62,7 @@ spec:
 
 Create a new Kubernetes custom resource definition (CRD) for the Admission Check Controller.
 
-\`\`\`yaml
+```yaml
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
@@ -80,13 +80,13 @@ spec:
     kind: AdmissionCheck
     shortNames:
       - ac
-\`\`\`
+```
 
 ### Step 2: Implement the Admission Check Controller Logic
 
 Implement the controller logic to read the OCM placement decision and populate the parameters of the Admission Check.
 
-\`\`\`go
+```go
 package controllers
 
 import (
@@ -120,13 +120,13 @@ func (r *AdmissionCheckReconciler) Reconcile(ctx context.Context, req ctrl.Reque
 
     return ctrl.Result{}, nil
 }
-\`\`\`
+```
 
 ### Step 3: Deploy the Controller
 
 Deploy the controller to the Kubernetes cluster.
 
-\`\`\`yaml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -157,7 +157,7 @@ spec:
             - containerPort: 9443
               name: webhook-server
               protocol: TCP
-\`\`\`
+```
 
 ### Step 4: Validate the Implementation
 
