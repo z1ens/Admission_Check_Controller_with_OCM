@@ -1,7 +1,35 @@
+# External Kueue Admission Check Controller
 
-# Proposal for External Kueue Admission Check Controller
+## Release Signoff Checklist
 
-## Introduction
+- [ ] Enhancement is `implementable`
+- [ ] Design details are appropriately documented from clear requirements
+- [ ] Test plan is defined
+- [ ] Graduation criteria for dev preview, tech preview, GA
+- [ ] User-facing documentation is created in [website](https://github.com/open-cluster-management-io/open-cluster-management-io.github.io/)
+
+## Summary
+
+This proposal outlines the creation of an external [Kueue Admission Check Controller](https://kueue.sigs.k8s.io/docs/concepts/admission_check/) integrating OCM `Placement` results with [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/). The controller reads OCM `Placement` decisions and generates corresponding `MultiKueueConfig` and `MultiKueueCluster` resources, streamlining the setup of the [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/) environment and enabling users to select clusters based on custom workload deployment criteria.
+
+## Motivation
+- Setting up a [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/) environment for multiple clusters is a complex and manual process, often requiring users to create `Secret` and `Kubeconfig` for each worker cluster individually. This complexity can lead to errors and inefficiencies, especially as the number of clusters grows.
+
+- Many users prefer leveraging the OCM framework for cluster selection. OCM provides a robust mechanism for making `Placement` decisions, which can be effectively integrated with [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/) to streamline job dispatching.
+
+### Goals
+
+- An Admission Check Controller that incorporates OCM `Placement` results into the Admission Check `parameter`.
+- Enable seamless integration between OCM and [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/) for efficient job dispatching.
+- Simplify the setup process for [MultiKueue](https://kueue.sigs.k8s.io/docs/concepts/multikueue/) environments across multiple clusters.
+
+### Non-Goals
+
+N/A
+
+## Proposal
+
+### User Stories
 
 ### Existing Components
 
