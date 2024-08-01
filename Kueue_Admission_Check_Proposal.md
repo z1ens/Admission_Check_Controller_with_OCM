@@ -23,7 +23,7 @@ Integrate OCM placement results with MultiKueue by creating an Admission Check C
 
 The Admission Check Controller will read the OCM placement results and generate corresponding MultiKueueConfig and MultiKueueCluster. Here is an example of the API design for the Admission Check Controller:
 
-\`\`\`yaml
+```yaml
 apiVersion: kueue.x-k8s.io/v1beta1
 kind: AdmissionCheck
 metadata:
@@ -34,7 +34,7 @@ spec:
     apiGroup: cluster.open-cluster-management.io
     kind: Placement
     name: nvidia-t4
-\`\`\`
+```
 
 ### Workflow
 
